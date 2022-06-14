@@ -1,0 +1,79 @@
+
+<!--<form  [formGroup]="form"  (ngSubmit)="onsubmit()">-->
+    <form #myform="ngForm" >
+      Id:<input type="number" name="fid"   [(ngModel)]="data.id"><br><br>
+    Enter name:{{data.name}}<input type="text" name="name"   [(ngModel)]="data.name"><br><br>
+    Enter Address:<textarea name="add"   [(ngModel)]="data.add"></textarea><br><br>
+    gender:
+    male:<input type="radio" name="gender"  value="male"  [(ngModel)]="data.gender">
+    feamle <input type="radio" name="gender"  value="female" [(ngModel)]="data.gender"><br><br>
+    Date:<input type="date" name="name" [(ngModel)]="data.date"><br><br>
+
+   <label>hobbie:</label>
+   <!-- <label>{{checkboxJson | json}}</label> -->
+   <div *ngFor="let item of checkboxJson;let i=index">
+    <input type="checkbox" [(ngModel)]="item.checked" name="checkbox{{i}}">{{item.label}}
+   </div><br>
+   
+
+    <!-- Website:
+   <div *ngFor="let web of websiteList">
+       <input type="checkbox" [value]="web.value" (change)="onCheckbox($event)" />
+       {{web.name}}
+   </div>  -->
+   <!-- hobbie:
+
+     <input type="checkbox" name="checkbox" value="reading" [(ngModel)]="data.hobbie" >Reading books<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     <input type="checkbox" name="checkbox" value="playing" [checked]="data.hobbie" >playing<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="checkbox"  value="Dancing" >Dancing<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="checkbox" value="Singing">Singing<br><br>  -->
+
+    
+
+     Choose a car:
+     <select name="cars" id="cars"[(ngModel)]="data.cars">
+       <option value="volvo">Volvo</option>
+       <option value="saab">Saab</option>
+       <option value="opel">Opel</option>
+       <option value="audi">Audi</option>
+     </select><br><br>
+   <button  type="button" (click)="sdata();myform.resetForm()">Save</button>
+   <button type="button" (click)="showdata()">Data</button>
+   <!--<button (click)="edit()">Edit</button>
+     <button (click)="delete()">Delete</button>
+   <button (click)="reset()">Reset</button>-->
+  
+  </form>
+  
+  <!--<table>
+      <tr>
+  <th>name</th>
+  <th>add</th>
+  <th>Gender</th>
+  <th>hobbie</th>
+  <th>cars</th>
+  </tr>
+  <tr *ngFor="let data of id" > 
+      <td>{{data.name}}</td>
+      <td>{{data.add}}</td>
+      <td>{{data.gender}}</td>
+      <td>{{data.cars}}</td>
+   
+
+
+  </tr>
+  </table>-->
+  
+
+  
+<!-- <a *ngFor="let item of id" routerLink="/form/{{item.fid}}">{{item.name}}</a><br> -->
+<!-- <      router-outlet></router-outlet> --> <!-- hobbie:
+     <div *ngFor="let obj of hobbie ;let i=index">
+       <input type="checkbox" *ngIf="!select.includes(obj.label)"
+        [value]="obj.label" (change)="onCheckboxChange($event)"/>
+       <input type="checkbox" *ngIf="!select.includes(obj.label)" [value]="obj.label" (change)="onCheckboxChange($event)" checked/> 
+       {{obj.label}}
+     </div> -->

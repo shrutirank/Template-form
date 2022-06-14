@@ -1,0 +1,32 @@
+
+
+<table border="3px">
+    <tr>
+<th>Id </th>
+<th>name</th>
+<th>add</th>
+<th>Gender</th>
+<th>Date</th>
+<th>Hobbie</th>
+<th>cars</th>
+<th  colspan="2">Action</th>
+</tr>
+
+
+<tr *ngFor="let item of data" >  
+    <td>{{item.id}}</td> 
+    <td>{{item.name}}</td>
+    <td>{{item.add}}</td>
+    <td>{{item.gender}}</td>
+    <td>{{item.date}}</td>
+    <td>{{item.hobbie}}</td>
+    <td>{{item.cars}}</td>
+   <!-- <td> <a [routerLink]="['/form',item.fid]"><button (click)="edit(item.fid)">Edit</button></a></td> -->
+   <td><button type="button" (click)="edit(item.id)">Edit</button></td>
+   <td><button type="button" (click)="del(item)">Delete</button></td>
+
+ </tr>
+
+</table>
+
+
