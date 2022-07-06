@@ -1,0 +1,64 @@
+  <div class="container">
+
+    <form #myform="ngForm"  >
+       <div>
+   <label> name:{{data.name}}</label>
+   <input type="text" name="name"  [(ngModel)]="data.name" 
+      #name="ngModel" required pattern="[a-zA-Z][a-zA-Z ]+"  minlength="2" maxlength="10"><br>
+   <small  *ngIf="name.touched && !name.valid">please enter your name</small><br>
+   <!-- <small  *ngIf="name.errors">enter valid name</small>  -->
+  </div> 
+
+  <div class="form-group"> 
+     <label>Enter Address:</label>
+     <textarea name="address"   [(ngModel)]="data.address"
+        #address="ngModel" minlength="5" maxlength="50"></textarea><br>
+        <small  *ngIf="address.touched && !address.valid">enter address minlength 5</small><br>
+    </div>
+
+    <label>gender:</label>
+    male:<input type="radio" name="gender"  value="male"  [(ngModel)]="data.gender"   #gender="ngModel" required="">
+    feamle <input type="radio" name="gender"  value="female" [(ngModel)]="data.gender"><br>
+    <small  *ngIf="gender.untouched && !gender.valid">select the Gender</small><br>
+
+    <div class="form-group">
+   <label> Date:</label>
+   <input type="date" name="date" [(ngModel)]="data.date" #date="ngModel" required="" ><br>
+    <small  *ngIf="gender.touched && !gender.valid">select  date</small><br>
+  </div>
+
+   <label>Hobbie:</label>
+   <!-- <label>{{checkboxJson | json}}</label> -->
+   <div *ngFor="let item of checkboxJson;let i=index">
+    <input type="checkbox" [(ngModel)]="item.checked" name="checkbox{{i}}">{{item.label}}
+   </div><br>    
+
+    <label> Choose a car:</label>
+     <select name="cars" id="cars"[(ngModel)]="data.cars">
+       <option value="volvo">Volvo</option>
+       <option value="saab">Saab</option>
+       <option value="opel">Opel</option>
+       <option value="audi">Audi</option>
+     </select><br><br>
+
+
+     <div *ngFor="let item of data.subject; let i=index" >
+     
+        <label>Subject</label>
+        <input type="text"  name="subject{{i}}" [(ngModel)]="item.subjectname" #subject="ngModel"  pattern="[a-zA-Z][a-zA-Z ]+">
+        <small  *ngIf="subject.touched && !subject.valid">please enter subject proper</small>
+
+        <label>Marks</label>
+        <input type="text" name="marks{{i}}"[(ngModel)]="item.marks"  #marks="ngModel" pattern="\d|10" > 
+        <small  *ngIf="marks.touched && !marks.valid">please enter marks</small>
+     
+        <button mat-stroked-button color="warn"  (click)="deletesubject(i)">Remove subject</button><br>
+    </div>
+    <button mat-stroked-button color="primary" (click)="addsubject()">ADD Subject</button><br><br>
+
+
+   <button  type="button" class="btn btn-danger" [disabled]="!myform.valid" (click)="onSubmit();myform.resetForm()">Save</button>
+   <button type="button" class="btn btn-dark" (click)="showdata()">Data</button>
+  </form>
+</div>
+ 
